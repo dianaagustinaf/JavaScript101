@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //manejador de evento
+        // para que el codigo JS se ejecute desp del body
+        // y lo manejo con un CALLBACK 
+
+        // VARIANTE 1
+        // funcion por parametro
+
+        // document.addEventListener("DOMContentLoaded",afterDOMLoaded);
+
+        // function afterDOMLoaded() {
+        //     const parrafo = document.querySelector("p");
+        //     parrafo.style.color= "yellow";
+        //     parrafo.style.background= "black";
+        //     parrafo.textContent = "Parrafo 1";
+        // }
+
+        // VARIANTE 2
+        // funcion anonima
+
+        // document.addEventListener("DOMContentLoaded", function() {
+        //     const parrafo = document.querySelector("p");
+        //     parrafo.style.color= "yellow";
+        //     parrafo.style.background= "black";
+        // });
+
+
+        // VARIANTE 3
+        // funcion flecha / fat arrow  
+        /// en esta variante no se puede usar THIS
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const parrafo = document.querySelector("p");
+            parrafo.style.color= "yellow";
+            parrafo.style.background= "black";
+        });
+        
+    </script>
+</head>
+<body>
+    
+
+    <!-- 
+        
+        DOM Document Object Model 
+        Arbol de nodos -> cada elemento del arbol es un nodo
+        
+        JS puede crear modificar y eliminar elementos del DOM
+
+    -->
+
+    <h1>DOM</h1>
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores expedita iste architecto voluptates? Ducimus aliquam doloremque a incidunt quo quam eius eveniet ipsam necessitatibus? Neque praesentium explicabo voluptate at maxime.</p>
+
+
+
+</body>
+</html>

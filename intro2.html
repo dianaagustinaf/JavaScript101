@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- que se cargue una vez que ya este la pagina cargada -->
+    <script src="JS/starter.js" async>
+
+        // JS es single thread 
+        // defer == si el script depende de otro script - dependant
+        // sino, se usa async
+    </script>
+
+</head>
+<body>
+    
+    <h1></h1>
+
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab, amet incidunt veritatis laudantium dolorem doloribus in totam nesciunt a? Soluta quam in architecto molestias eos placeat. Fuga molestiae ipsa dolore?</p>
+
+    
+    <button id="btn1">Saludar</button>
+    <!-- elemento html para utilizar salidas de JS  -->
+    <output id="salida1"></output>
+    <!-- antes tb se usaba agregar etributos a las etiquetas
+    tipo ONCLICK, pero no se deberia "ensuciar el html" -->
+
+    <!-- 
+        como html se ejecuta en orden linea x linea
+        por eso se usaba el script abajo de todo en el body
+
+        <script src="JS/starter.js"></script> 
+    -->
+
+    <script>
+
+        const botonSaludar = document.querySelector("#btn1")
+        // al queryselector se le puede pasar todo,
+        // si es id se pasa con #
+
+        botonSaludar.addEventListener("click", () => {
+
+            const nombre = prompt("Ingresar su nombre");
+            // prompt = pop up con input
+
+            document.querySelector("#salida1")
+                    .textContent = `Hola ${nombre}`;
+            // textcontent es lo que va entre tag de apertura y tag de cierre
+        });
+
+
+
+    </script>
+
+</body>
+</html>
