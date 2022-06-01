@@ -34,13 +34,19 @@ arrayNombres.forEach(nom => {
 console.log("_____NOMBRES solo G_____");
 arrayNombres.filter(n => n.startsWith("G")).forEach(n => console.log(n));
 
+
+console.log("_____NOMBRES solo g_____");
+arrayNombres.filter(n => n.toLowerCase().startsWith("g")).forEach(n => console.log(n));
+    
+
 // to LOWER
 //.map(n=>n.toLowerCase)
 
 
-// OBJETO
+///////////////// OBJETOS ///////////////////////////
 
 //LITERAL 
+console.log("---------- LITERAL -----------")
 // no es un prototype (Clase) es directamente un obj
 
 const persona = {
@@ -53,11 +59,10 @@ const persona = {
     // arrow function no funciona con THIS
 };
 
-console.log("---------- Nombre Completo -----------")
 console.log(persona.nombreCompleto());
 
-
-// Creacion de obj con OBJECT()
+///////////////
+// con OBJECT()
 console.log("---------- OBJECT -----------")
 
 const empleado = new Object();
@@ -67,10 +72,48 @@ empleado.nombre = "Greta";
 empleado.apellidos = "Ginapoulus";
 empleado.fullName = () => `${empleado.nombre} ${empleado.apellidos}`; /// ARROW sin return sin THIS sin {}
 
-
-console.log("---------- Nombre Completo -----------")
 console.log(empleado.fullName());
 
+
+console.log("----------  ARRAY  OBJECT -----------")
+
+const arrTrabajadores = [];
+
+const trabajador1 = new Object();
+trabajador1.nombre = "Andy";
+trabajador1.correo = "andy@andy.com";
+
+const trabajador2 = new Object();
+trabajador2.nombre = "Fede";
+trabajador2.correo = "fede@fede.com";
+
+const trabajador3 = new Object();
+trabajador3.nombre = "Greta";
+trabajador3.correo = "greta@gmail.com";
+
+const trabajador4 = new Object();
+trabajador4.nombre = "Gina";
+trabajador4.correo = "Gina@gmail.com";
+
+
+arrTrabajadores.push(trabajador1,trabajador2,trabajador3,trabajador4);
+
+
+arrTrabajadores.forEach(tr => {
+    console.log(tr)
+});
+
+console.log("----------  ARRAY  OBJECT FILTRADO -----------")
+// tomo solo el correo con MAP, y FILTRO por correo
+arrTrabajadores.map(t => t.correo).filter(c => c.includes("gmail.com")).forEach(c => console.log(c));
+
+console.log("----------  ARRAY  OBJECT FILTRADO COMPLETO -----------")
+// FILTRO por correo pero devuelvo objeto COMPLETO
+arrTrabajadores.filter(c => c.correo.includes("gmail.com")).forEach(c => console.log(c));
+
+// console.log("----------  SORT -----------")
+// SORT
+// arrTrabajadores.sort(t => t.nombre).forEach(c => console.log(c));
 
 
 

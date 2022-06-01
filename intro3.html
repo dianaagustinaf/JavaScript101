@@ -6,7 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+
+<h1> Agregar elementos al DOM </h1>
+
+<!-- on click = agregar parrafo  ////   title agrega caption -->
+<button id="btn1" title="Agrega un parrafo al body del documento"> Agregar un parrafo </button>
     
+
+<script>
+
+    // agregar parrafo
+    let pCounter = 0;
+    const boton1 = document.querySelector("#btn1");
+    boton1.addEventListener("click", function(){
+        
+        // hay que crear el elemento por separado (desp agregar atrib, contenido, etc)
+        const elementoParrafo = document.createElement("p");
+
+        // en vez de esto usa SET ATTRIBUTE
+        //const atributoStyle = document.createAttribute("style");
+        //atributoStyle = "color = red";
+
+        //agregar contenido / texto al parrafo
+        elementoParrafo.textContent = `Parrafo ${pCounter++}`;
+
+        elementoParrafo.setAttribute("style", "color: purple");
+
+        //agregarlo al body
+        document.body.appendChild(elementoParrafo);
+
+    })
+
+</script>
 </body>
 </html>
