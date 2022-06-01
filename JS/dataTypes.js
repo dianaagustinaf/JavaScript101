@@ -1,3 +1,6 @@
+// https://eloquentjavascript.net/  VER
+ 
+
 // ARRAY
 
 const arrayNombres = [];

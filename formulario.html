@@ -1,0 +1,58 @@
+<!-- https://jsonplaceholder.typicode.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulario de Alta de Persona</h1>
+
+    <fieldset>
+        <legend>Formulario</legend>
+        <form action="">
+            <input type="text" id="nombre" placeholder="Nombre">
+            <input type="text" id="apellidos" placeholder="Apellidos">
+            <!-- RADIO BOTONES se relacionan por el atrib NAME -->
+            
+            <fieldset>
+                <legend>Sexo</legend>
+                <label for="hombre">Hombre</label>
+                <input type="radio" id="hombre" value="HOMBRE" name="sexo">
+                <label for="mujer">Mujer</label>
+                <input type="radio" id="mujer" value="MUJER" name="sexo">
+                <label for="otro">Otro</label>
+                <input type="radio" id="otro" value="OTRO" name="sexo">
+                <!-- lo llamo por el id, pero el valor que me quedo es el value -->
+            </fieldset>
+            
+            <input type="number" id="salario" placeholder="Salario" min="1000" max="3000">
+            
+            <label for="poblacion">Poblacion</label>
+            <select name="poblacion" id="poblacion">
+                <option value="0"></option>
+                <option value="Madrid">Madrid</option>
+                <option value="Cuenca">Cuenca</option>
+                <option value="Segovia">Segovia</option>
+                <option value="Guadalajara">Guadalajara</option>
+            </select>
+
+            <label for="sindicado">Sindicado</label>
+            <input type="checkbox" name="sindicado" id="sindicado">
+            <!-- id solo sirve si no interviene JS -->
+        </form>
+    </fieldset>
+
+</body>
+</html>
+
+
+<!-- 
+    desplegable on click si tiene coche
+    evento CHANGE
+    // display none
+    // display hidden
+ -->
