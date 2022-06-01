@@ -13,7 +13,7 @@
 
     <fieldset>
         <legend>Formulario</legend>
-        <form action="">
+        <form action="#" method="post" id="form1">
             <input type="text" id="nombre" placeholder="Nombre">
             <input type="text" id="apellidos" placeholder="Apellidos">
             <!-- RADIO BOTONES se relacionan por el atrib NAME -->
@@ -25,7 +25,7 @@
                 <label for="mujer">Mujer</label>
                 <input type="radio" id="mujer" value="MUJER" name="sexo">
                 <label for="otro">Otro</label>
-                <input type="radio" id="otro" value="OTRO" name="sexo">
+                <input type="radio" id="otro" value="OTRO" name="sexo"> 
                 <!-- lo llamo por el id, pero el valor que me quedo es el value -->
             </fieldset>
             
@@ -43,11 +43,72 @@
             <label for="sindicado">Sindicado</label>
             <input type="checkbox" name="sindicado" id="sindicado">
             <!-- id solo sirve si no interviene JS -->
+
+            <input type="submit">
         </form>
     </fieldset>
 
+    <script>
+        const arrayPersona = [];
+
+        //onclick en SUBMIT -> recoger los datos y alta 
+        const formulario = document.querySelector("#form1");
+
+        formulario.addEventListener("submit", function(event) {
+            // al pasar por callback el objeto EVENT
+            // trae mas informacion sobre el evento 
+            event.preventDefault();  // evitar el comportamiento por defecto de submit de enviar al servidor
+            event.stopPropagation(); 
+
+            const persona = new Object();
+            persona.nombre = document.querySelector("#nombre").value;
+            console.log(`nombre: ${persona.nombre}`);
+            persona.apellidos = document.querySelector("#apellidos").value;
+
+            // checked en TRUE (para radiobotones)
+            persona.sexo = document.querySelector("input[type='radio']:checked").value;
+            console.log(`sexo: ${persona.sexo}`);
+
+            persona.salario = document.querySelector("#salario").value;
+
+            // tomamos el .value a partir del id #pobl
+            persona.poblacion = document.querySelector("#poblacion").value; 
+            console.log(`poblacion: ${persona.poblacion}`);
+            
+            persona.sindicado = document.querySelector("#sindicado").checked;
+            console.log(`sindicado: ${persona.sindicado}`);
+
+            //GUARDO la persona
+            arrayPersona.push(persona);
+
+            // this == el formulario
+            this.reset();
+
+            // mando el formulario con AJAX = no refresca la pag
+            // no quiero que se recarge toda la pagina al clickon submit
+            // ajax se puede implementar por xml (mas viejo) o por FETCH
+
+
+            arrayPersona.forEach(p => {
+                console.table(p);
+            });
+
+        });
+    </script>
+
 </body>
 </html>
+
+
+<!-- 
+    DEPURAR EN CHROME
+
+    - inspect -> sources
+    - click en la linea donde quiera breakpoint
+    - marcar el simbolo PAUSA ||
+
+
+ -->
 
 
 <!-- 
