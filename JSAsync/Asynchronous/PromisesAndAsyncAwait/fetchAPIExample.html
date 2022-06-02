@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    <h1>Listado de usuarios</h1>
+
+    <ul id="listado">
+
+    </ul>
+
+    <button id="btn1">Listar</button>
+
+<script>
+    const btn1 = document.querySelector('#btn1');
+
+    /* Uso de Fetch API*/
+    
+    /*
+    // GET
+    // (si fuera POST, otro parametro para el json que mando)
+
+    btn1.addEventListener('click', function() {
+        fetch("https://jsonplaceholder.typicode.com/users")  // peticion
+            .then(response => {                       // la primera rta maneja error 
+                if(!response.ok) {
+                    throw new Error(`HTTP error! status ${response.status}`);
+                } else {
+                    return response.json();         // si OK, devuelve json
+                }
+            })
+            .then(users => {
+                console.log(users);
+
+                const listado = document.querySelector("#listado");
+
+                users.forEach(user => {
+                    const item = document.createElement('li');
+                    item.textContent = user.email;
+                    listado.appendChild(item);
+                });
+
+            })
+            .catch(e => console.log(`There has been an error with your fetch operacion: ${e.message}`));
+    });
+
+    //*/
+
+
+    /* ************* Async Await *************** */
+
+    //*
+    
+    async function myFetch() {
+        let response = await fetch("https://jsonplaceholder.typicode.com/users");  
+        //aguarda peticion
+
+        if(!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);   // maneja error
+        } else {
+            let users = await response.json();    // aguarda por la conversion a json de los users
+            console.log(users);
+
+            // Mostrar el listado de usuarios (los nombres, el correo, o algo, no todo)
+            // en la lista no ordenada
+
+            const listado = document.querySelector("#listado");
+
+            users.forEach(user => {
+                const item = document.createElement("li");
+
+                item.textContent = user.email;
+
+                listado.appendChild(item);
+            });
+
+
+        }
+    }
+
+    btn1.addEventListener('click', function(){
+        myFetch()
+            .catch(e => {
+                console.error("Ha habido un error !");
+            });
+    });
+
+    //*/
+
+</script>
+</body>
+</html>

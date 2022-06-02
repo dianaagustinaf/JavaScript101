@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* Creacion de objetos en Javascript */
+
+        // Variante 1. Object literal (Literalmente creamos el objeto)
+        // const persona = {
+
+        //     nombre: "Victor Rafael",
+        //     apellidos: "Machado Arteaga",
+        //     edad: 59,
+        //     'vivienda habitual': "Calle de las calles",
+        //     nombreCompleto: function() {
+        //         return `${this.nombre} ${this.apellidos}`;
+        //     }
+        // };  
+
+        // Variante 2. Object Literal
+        // const persona = {
+
+        //     nombre: "Victor Rafael",
+        //     apellidos: "Machado Arteaga",
+        //     edad: 59,
+        //     viviendaHabitual: "Calle de las calles",
+        //     nombreCompleto() {
+        //         return `${this.nombre} ${this.apellidos}`;
+        //     }
+        // };
+
+        // Variante 3. Muy adecuada para cuando tienes que recuperar datos desde un formulario
+        // o en general, cuando las propiedades del objeto no se conocen a priori.
+        const persona = {};
+
+        persona.nombre = "Victor";
+        persona.apellidos = "Machado";
+        persona.email = "vrmachado@gmail.com";
+
+        persona.fullName = () => {
+            return `${persona.nombre} ${persona.apellidos}`;
+        }
+
+        console.log(persona.nombre);
+        console.log(persona.apellidos);
+        console.log("Nombre completo: " + persona.fullName());
+        // console.log("Vivienda Habitual: " + persona['viviendaHabitual']);
+
+    </script>
+</body>
+
+</html>

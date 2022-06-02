@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XmlHttpRequest</title>
+</head>
+
+<body>
+    <h1>AJAX (Asynchronous JavaScript and XML) JavaScript Asincrono, con XmlHttpRequest y callbacks</h1>
+
+    <button id="btn1" title="recupera users from jsonplaceholder.typicode.com">
+        Recupera usuarios</button>
+
+    <h3>Email de los usuarios seleccionados</h3>
+
+    <div>
+        <ul id="usersEmail">
+
+            <!--  ACA SE GENERAN DINAMICAMENTE LOS <LI> CON 
+                LOS USERS QUE VIENEN EN LA REQUEST   -->
+
+        </ul>
+    </div>
+    <script>
+        const boton1 = document.querySelector('#btn1');
+
+        boton1.addEventListener('click', function() {
+
+            // Se va a realizar una petición (request) de forma asincrónica
+            // al servidor jsonplaceholder.typicode.com, para que nos devuelva
+            // en formato JSON una lista de usuarios
+
+            const xhr = new XMLHttpRequest();
+
+            // Hay que preparar el codigo de lo que vamos a hacer con el dato recibido
+            // antes de crear y lanzar la request
+            xhr.onreadystatechange = function() {
+                if(this.readyState === 4 && this.status === 200) {
+                    // Recibo el recurso solicitado y 
+                    // actualizamos la parte de la pagina que necesita actualizacion.
+                    console.log("Dato recibido en formato de JSON");
+                    const jsonUsers = this.responseText;
+                    console.log(jsonUsers);
+
+                    // Convertimos el JSON a objeto de JavaScript 
+                    console.log("Dato JSON convertido a Objeto de JavaScript");
+                    const usersObject = JSON.parse(jsonUsers);
+                    console.log(usersObject);
+
+                    // Ejercicio. Recorrer la coleccion (array) de objetos, usersObject y
+                    // seleccionar el correo de cada usuario y mostrar en una lista no ordenada
+                    // los correos del dominio .biz
+                    const usersEmail = usersObject.map(user => user.email).filter(email => email.includes(".biz"));
+                    console.log(usersEmail); 
+
+                    const listaDeEmails = document.querySelector('#usersEmail');
+
+                    for (const email of usersEmail) {
+                        const item = document.createElement('li');
+                        item.textContent = email;
+                        listaDeEmails.appendChild(item);
+                    }
+
+                }
+            };
+
+            // Crear la request
+            xhr.open("get", "https://jsonplaceholder.typicode.com/users");
+
+            // Se lanza la request
+            xhr.send();
+        });
+    </script>
+</body>
+
+</html>

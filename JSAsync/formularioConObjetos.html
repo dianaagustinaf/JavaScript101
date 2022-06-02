@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Formulario de alta de empleados</h1>
+
+    <fieldset>
+        <legend>Formulario</legend>
+        <form action="#" method="post" id="form1">
+            <input type="text" id="nombre" placeholder="Nombre, por favor!!!">
+            <input type="text" id="apellidos" placeholder="Apellidos">
+            <input type="email" id="email" placeholder="Correo">
+            <label for="hombre">Hombre: </label>
+            <input type="radio" value="Hombre" name="sexo" id="hombre">
+            <label for="mujer">Mujer: </label>
+            <input type="radio" value="Mujer" name="sexo" id="mujer">
+            <label for="departamentos">Departamentos</label>
+            <select id="departamentos">
+                <option></option>
+                <option value="1">RRHH</option>
+                <option value="2">IFORMATICA</option>
+                <option value="3">FINANZAS</option>
+            </select>
+            <input type="submit">
+        </form>
+    </fieldset>
+    <h3>Empleados</h3>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Sexo</th>
+                    <th>Departamento</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const empleados = [];
+        
+        const formulario = document.querySelector('#form1');
+
+        formulario.addEventListener('submit', function(event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const empleado = {};
+
+            empleado.nombre = document.querySelector("#nombre").value;
+            empleado.apellidos = document.querySelector('#apellidos').value;
+            empleado.correo = document.querySelector('#email').value;
+
+            // Por cortesía de Jose Ramon 
+            empleado.sexo = document.querySelector('input[name="sexo"]:checked').value; 
+
+            // Profesor
+            // empledo.sexo = document.querySelector('#hombre').checked ? 
+            //                     document.querySelector('#hombre').value :
+            //                         document.querySelector('#mujer').value;
+
+            const selectDptos = document.querySelector('#departamentos');
+
+            empleado.dpto = selectDptos.options[selectDptos.options.selectedIndex].textContent;
+            console.log(empleado);
+
+            // Agregar el empleado a el array de empleados
+            empleados.push(empleado);
+            console.log(empleados);
+
+            // Agregar el empleado al cuerpo de la tabla
+            const fila = document.createElement('tr');
+
+            const colNombre = document.createElement('td');
+            const colApellidos = document.createElement('td');
+            const colCorreo = document.createElement('td');
+            const colSexo = document.createElement('td');
+            const colDpto = document.createElement('td');
+
+            colNombre.textContent = empleado.nombre;
+            colApellidos.textContent = empleado.apellidos;
+            colCorreo.textContent = empleado.correo;
+            colSexo.textContent = empleado.sexo;
+            colDpto.textContent = empleado.dpto;
+
+            // Inicialmente
+
+            // fila.appendChild(colNombre);
+            // fila.appendChild(colApellidos);
+            // fila.appendChild(colCorreo);
+            // fila.appendChild(colSexo);
+            // fila.appendChild(colDpto);
+
+            // Aporte de Guillermo
+            fila.append(colNombre, colApellidos, colCorreo, colSexo, colDpto);
+
+            document.querySelector('tbody').appendChild(fila);
+
+        });
+
+    </script>    
+</body>
+
+</html>

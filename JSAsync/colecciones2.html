@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <select id="nombres">
+            <option></option>
+            <option value="1">Inmma</option>
+            <option value="2">Fabricio</option>
+            <option value="3">Luis</option>
+            <option value="4">Miguel</option>
+            <option value="5">Gonzalo</option>
+        </select>
+    </div>
+
+    <output id="result"></output>
+
+    <script>
+        const selectNombres = document.querySelector('#nombres');
+        const result = document.querySelector('#result');
+        
+        // Variante 1, con funcion de callback anonima, porque tenemo this vinculado
+        // al objeto actual
+        selectNombres.addEventListener('change', function() {
+
+            // Recuperar el value de la opcion seleccionada
+            const valor = this.value;
+
+            /* Recuperar el texto de la opcion seleccionada */ 
+            // Primero: Recuperar el indice de la opcion seleccionada
+            const indiceDeLaOpcionSeleccionada = this.options.selectedIndex;
+            // Ya con el indice de la option seleccionada puedo obtener el texto de la opcion
+            const textoOpSelected = this.options[indiceDeLaOpcionSeleccionada].textContent;
+
+            // TODO. Comentar despues
+            // console.log("Indice de la option seleted: " + indiceDeLaOpcionSeleccionada);
+            result.textContent = `Ha seleccionado la option con valor ${valor} y texto ${textoOpSelected}`;
+
+        });        
+
+        // Variante 2, con Arrow Function 
+        // selectNombres.addEventListener('change', (event) => {
+
+        //     // Recuperar el value de la opcion seleccionada
+        //     // const valor = event.currentTarget.value;
+        //     const valor = event.target.value;
+
+        //     result.textContent = `Ha seleccionado la option con valor ${valor}`;
+
+        // });        
+
+
+
+
+
+    </script>
+</body>
+
+</html>
